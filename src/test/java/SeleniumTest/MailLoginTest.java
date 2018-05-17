@@ -1,13 +1,15 @@
 package SeleniumTest;
 
+import org.apache.commons.io.FileUtils;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+
+import java.io.File;
+import java.io.IOException;
 
 public class MailLoginTest {
 
@@ -38,6 +40,13 @@ public class MailLoginTest {
         webDriver.findElement(By.id("btnSubmit")).click();
 
         Assert.assertTrue(webDriver.getPageSource().contains("Niestety podany login lub hasło jest błędne"));
+
+        File screenshootFile = ((TakesScreenshot)webDriver).getScreenshotAs(OutputType.FILE);
+        try{
+            FileUtils.copyFile(screenshootFile, new File("C:/SeleniumScreenShot/ScreenShot.png"));
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     @After
