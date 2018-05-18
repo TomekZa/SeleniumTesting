@@ -12,7 +12,6 @@ import java.io.File;
 import java.io.IOException;
 
 public class MailLoginTest {
-
     private WebDriver webDriver;
     private String url;
     private String user;
@@ -41,10 +40,10 @@ public class MailLoginTest {
 
         Assert.assertTrue(webDriver.getPageSource().contains("Niestety podany login lub hasło jest błędne"));
 
-        File screenshootFile = ((TakesScreenshot)webDriver).getScreenshotAs(OutputType.FILE);
-        try{
-            FileUtils.copyFile(screenshootFile, new File("C:/SeleniumScreenShot/ScreenShot.png"));
-        }catch (IOException e){
+        File screenshootFile = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
+        try {
+            FileUtils.copyFile(screenshootFile, new File("C:/SeleniumScreenShot/MailLoginTest.png"));
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
